@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+{% block main %}
+<!-- Section-->
+<section class="py-5">
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            <div class="col mb-5">
+                <div class="card h-100">
+                    {% for star  in stars %}
+                    <!-- Image de l'inventaire A MODIF-->
+                    <img class="card-img-top" src="https://upload.wikimedia.org/wikipedia/commons/4/42/Solar_prominence_from_STEREO_spacecraft_September_29%2C_2008.jpg" alt="..." />
+                    <!-- Informations sur l'inventaire-->
+                    <div class="card-body p-4">
+                        <div class="text-center">
+                            <!-- Nom de l'Étoile-->
+                            <h5 class="fw-bolder">{{ star.description }}</h5>
+                            <!-- Type -->
+                            {# Type: #}
+                           {# {{ star.type }}#}
+                        </div>
+                    </div>
+                    <!-- Bouton "Voir l'étoile"-->
+                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{{ path('app_star_show', {'id': star.id}) }}">Voir l'étoile</a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col mb-5">
+                <div class="card h-100">
+                    {% endfor %} {# stars #}
+                </div>
+            </div>
+        </div>
+        <a href="{{ path('app_star_new') }}" class="btn btn-success btn-sm" role="button">Créer une nouvelle étoile</a>
+    </div>
+</section>
+
+
+
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ciel Étoilé{% endblock %}
+
+{% block main %}
+    <h1>Ciel Étoilé</h1>
+    <table class="table table-light">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Ciel Étoilé</th>
+                <th>Publié</th>
+                <th>Étoiles</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ sky.id }}</td>
+                <td>{{ sky.description }}</td>
+                <td>{{ sky.publish ? 'Oui' : 'Non' }}</td>
+                <td>{% for star in sky.stars %}
+                    <li>
+                        <a href="{{ path('app_sky_star_show', {'sky_id': sky.id, 'star_id' : star.id}) }}">{{ star }}</a>
+                    </li>
+                {% endfor %}</td>
+            </tr>
+
+        </tbody>
+    </table>
+
+<table class='table'>
+    <a href="{{ path('app_sky_edit', {'id': sky.id}) }}" class="btn btn-warning" role="button">Modifier</a>
+    &nbsp
+    <a href="{{ path('app_sky_index') }}" class="btn btn-secondary btn-sm" role="button">Revenir à la liste</a>
+    &nbsp
+    {{ include('sky/_delete_form.html.twig') }}
+</table>
+
+{% endblock %}

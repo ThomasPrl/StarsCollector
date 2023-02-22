@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Création d'un nouveau membre{% endblock %}
+
+{% block main %}
+    <h1>Création d'un nouveau membre</h1>
+
+<table class='table'>
+    {{ include('member/_form.html.twig') }}
+    &nbsp
+    <a href="{{ path('app_member_index') }}" class="btn btn-secondary btn-sm" role="button">Revenir à la liste</a>
+</table>
+{% endblock %}

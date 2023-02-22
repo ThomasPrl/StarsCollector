@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Membre{% endblock %}
+
+{% block main %}
+<h1> Membre </h1>
+
+<table class="table table-light">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nom</th>
+            <th>Inventaires</th>
+            <th>Ciels étoilés</th>
+        </tr>
+      </thead>
+
+      <tbody>
+  <tr>
+    <td>{{ member.id }}</td>
+    <td>{{ member.name }}</td>
+
+    <td>{% for space in member.spaces %}
+    <li><a href="{{ path('app_space_show', {'id' : space.id}) }}">{{ space }}</a></li>
+    {% endfor %}</td>
+  
+    <td>{% for sky in member.skies %}
+      <li><a href="{{ path('app_sky_show', {'id' : sky.id}) }}">{{ sky }}</a></li>
+    {% endfor %}</td>
+
+  </tr>
+</tbody>
+</table>
+
+<table class="table">
+
+    <a href="{{ path('app_space_new', {'id': member.id}) }}" class="btn btn-success" role="button">Créer un nouvel inventaire</a>
+    &nbsp
+    <a href="{{ path('app_sky_new', {'id': member.id}) }}" class="btn btn-success" role="button">Créer un nouvel ciel étoilé (galerie)</a>
+    &nbsp
+    <a href="{{ path('app_member_index') }}" class="btn btn-secondary btn-sm" role="button">Revenir à la liste</a>
+    &nbsp
+    <a href="{{ path('app_member_edit', {'id': member.id}) }}" class="btn btn-warning btn-sm" role="button">Modifier</a>
+    &nbsp
+    {{ include('member/_delete_form.html.twig') }}
+
+</table>
+
+{% endblock %}

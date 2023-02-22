@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvel espace{% endblock %}
+
+{% block main %}
+    <h1>Création d'un nouvel espace</h1>
+
+    {{ include('space/_form.html.twig') }}
+    &nbsp
+    <a href="{{ path('app_space_index') }}" class="btn btn-secondary" role="button">Revenir à la liste</a>
+{% endblock %}

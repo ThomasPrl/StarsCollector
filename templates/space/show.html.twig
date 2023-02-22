@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ space.description }}{% endblock %}
+
+{% block main %}
+    <h1>{{ space.description }}</h1>
+    <table class="table">
+        <thead>
+            <tr>
+
+                <th>Étoiles</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for star in space.stars %}
+            <tr>
+
+                <td>{{ star.description }}</td>
+                <td><a class="btn btn-outline-dark mt-auto" href="{{ path('app_star_show', {'id': star.id}) }}">Voir cette étoile</a></td>
+                
+            </tr>
+            {% endfor %} {# stars  in space.stars #}
+        </tbody>
+    </table>
+
+<table class="table">
+    <a href="{{ path('app_space_edit', {'id': space.id}) }}" class="btn btn-warning btn-sm" role="button">Modifier</a>
+    &nbsp
+    <a href="{{ path('app_space_index') }}" class="btn btn-secondary btn-sm" role="button">Revenir à la liste</a>
+    &nbsp
+    {{ include('space/_delete_form.html.twig') }}
+</table>
+{% endblock %}

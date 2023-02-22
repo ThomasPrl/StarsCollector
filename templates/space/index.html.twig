@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}StarsCollector{% endblock %}
+
+{% block main %}
+<!-- Section-->
+<section class="py-5">
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            <div class="col mb-5">
+                <div class="card h-100">
+                    {% for space  in spaces %}
+                    <!-- Image de l'inventaire A MODIF-->
+                    <img class="card-img-top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Milky_Way_2010.jpg/1920px-Milky_Way_2010.jpg" alt="..." />
+                    <!-- Informations sur l'inventaire-->
+                    <div class="card-body p-4">
+                        <div class="text-center">
+                            <!-- Nom de l'inventaire-->
+                            <h5 class="fw-bolder">{{ space.description }}</h5>
+                            <!-- Owner -->
+                            Propriétaire:
+                            {{ space.member }}
+                        </div>
+                    </div>
+                    <!-- Bouton "Voir l'inventaire"-->
+                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{{ path('app_space_show', {'id': space.id}) }}">Voir l'inventaire</a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col mb-5">
+                <div class="card h-100">
+                    {% endfor %} {# spaces #}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

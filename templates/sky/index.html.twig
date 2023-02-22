@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Index des Ciels{% endblock %}
+
+{% block main %}
+    <h1>Index des Ciels Étoilés</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Description</th>
+                <th>Publié</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for sky in skies %}
+            <tr>
+                <td>{{ sky.id }}</td>
+                <td>{{ sky.description }}</td>
+                <td>{{ sky.publish ? 'Oui' : 'Non' }}</td>
+                <td>
+                    <a href="{{ path('app_sky_show', {'id': sky.id}) }}" class="btn btn-outline-dark mt-auto" role="button">Voir    </a>
+                    <a href="{{ path('app_sky_edit', {'id': sky.id}) }}" class="btn btn-outline-dark mt-auto" role="button">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {# <a href="{{ path('app_sky_new') }}" class="btn btn-success btn-sm" role="button">Créer un nouveau Ciel</a> #}
+
+{% endblock %}

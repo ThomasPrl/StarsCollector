@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modification d'un ciel {% endblock %}
+
+{% block main %}
+    <h1>Modification du ciel</h1>
+
+<table class='table'>
+    {{ include('sky/_form.html.twig', {'button_label': 'Update'}) }}
+    &nbsp
+    <a href="{{ path('app_sky_index') }}" class="btn btn-secondary btn-sm" role="button">Retourner à la liste</a>
+    &nbsp
+    {{ include('sky/_delete_form.html.twig') }}
+</table>
+{% endblock %}

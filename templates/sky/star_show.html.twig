@@ -1,0 +1,45 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Étoile{% endblock %}
+
+{% block main %}
+<h1> Étoile </h1>
+
+<table class="table table-light">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Étoiles</th>
+            <th>Types</th>
+            <th>Masse</th>
+            <th>Température</th>
+            <th>Diamètre</th>
+        </tr>
+      </thead>
+
+<tbody>
+  <tr>
+    <td>{{ star.id }}</td>
+    <td>{{ star.description }}</td>
+    <td>{{ star.types|join(', ') }}</td>
+    <td>{{ star.mass }}</td>
+    <td>{{ star.temperature }}</td>
+    <td>{{ star.diameter }}</td>
+
+  </tr>
+</tbody>
+
+</table>
+
+
+<table class='table'>
+    <a href="{{ path('app_star_edit', {'id': star.id}) }}" class="btn btn-warning btn-sm" role="button">Modifier</a>
+    &nbsp
+    <a href="{{ path('app_sky_show', { 'id': sky.id}) }}" class="btn btn-secondary btn-sm" role="button">Revenir à la galerie</a>
+    &nbsp
+    {{ include('star/_delete_form.html.twig') }}
+</table>   
+  <a href="{{ path('app_star_index') }}" class="btn btn-secondary btn-sm" role="button">Aller à la liste des Étoiles</a>
+{% endblock %}
+
